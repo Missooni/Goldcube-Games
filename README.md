@@ -11,8 +11,7 @@ https://github.com/Missooni/Goldcube-CCTweaked-Console/
 
 Put an empty floppy disk into your ingame disk drive, then use the following commands:
 ```
-pastebin get <ID> gcgame
-progdor2 gcgame disk/gcgame
+progdor2 -pb ID "disk/gcgame"
 label set right "GAME NAME"
 ```
 **ID** - The file name of the game, as seen in the repository<br>
