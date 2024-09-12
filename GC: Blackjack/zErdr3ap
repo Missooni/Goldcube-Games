@@ -1,0 +1,717 @@
+{
+  mainFile = false,
+  compressed = false,
+  data = {
+    [ "stages/dealMenu" ] = "[ gameMenu.nft\
+-*[x][rules|rules][exit|exit][deal|deal]\
+- deal\
+~ pullCard\
+- rules\
+~ rules\
+- exit",
+    [ "stages/drawCards" ] = "+ block.stone.break[1,1]\r\
+\r\
+? [cardTurn>5]\r\
+- _cardTurn_\r\
+\r\
+{ _hand1ID_.nft[4,4]\r\
+{>_hand1Card_[40,4][f,0]\r\
+{ Reverse.nft[10,4]\r\
+{>?[40,5][f,0]\r\
+{>Dealer's Hand[4,10][e,0]\r\
+{>\\153[3,10][nil,e]\r\
+{>Total: ?[3,11][nil,0]\r\
+{ _hand3ID_.nft[4,13]\r\
+{>_hand3Card_[40,15][f,0]\r\
+{ _hand4ID_.nft[10,13]\r\
+{>_hand4Card_[40,16][f,0]\r\
+{>Players's Hand[4,19][b,0]\r\
+{>\\153[3,19][nil,b]\r\
+{>Total: ?[3,20][nil,0]\r\
+~ countTotals1\r\
+\r\
+- 6\r\
+{ _hand5ID_.nft[16,13]\r\
+{>_hand5Card_[40,17][f,0]\r\
+~ countTotals1\r\
+\r\
+- 7\r\
+{ _hand6ID_.nft[22,13]\r\
+{>_hand6Card_[40,18][f,0]\r\
+~ countTotals1\r\
+\r\
+- 8\r\
+{ _hand7ID_.nft[28,13]\r\
+{>_hand7Card_[40,19][f,0]\r\
+~ countTotals1\r\
+\r\
+- 9\r\
+{ _hand8ID_.nft[16,4]\r\
+{>_hand8Card_[40,6][f,0]\r\
+~ countTotals1\r\
+\r\
+- 10\r\
+{ _hand9ID_.nft[22,4]\r\
+{>_hand9Card_[40,7][f,0]\r\
+~ countTotals1\r\
+\r\
+- 11\r\
+{ _hand10ID_.nft[28,4]\r\
+{>_hand10Card_[40,8][f,0]\r\
+~ countTotals1",
+    [ "images/AceDiamonds.nft" ] = "0eA7    \
+07     \
+07  e7  \
+07     \
+87     ",
+    [ "images/Card.nft" ] = "07     \
+07     \
+07     \
+07     \
+87     ",
+    [ "images/6Diamonds.nft" ] = "0e67    \
+07 e7 e \
+07 e7 e \
+07 e7 e7 \
+87     ",
+    [ "images/JackDiamonds.nft" ] = "0eJ7  f e\
+07 f 8 0  \
+0f e   0 \
+0ef e 0 e\
+87     ",
+    [ "stages/updateRank" ] = "? [stat4=10]\r\
+? [stat7:&8Familar Face]\r\
+? [stat4=21]\r\
+? [stat7:&1Blackjack of All\\nTrades]\r\
+? [stat4=30]\r\
+? [stat7:&5Veteran Cardslinger]\r\
+? [stat4=40]\r\
+? [stat7:&3Wildest Hand in the West]\r\
+? [stat4=52]\r\
+? [stat7:&4Sharpest in the Deck]\r\
+? [stat4=60]\r\
+? [stat7:&bStudent of the Suits]\r\
+? [stat4=75]\r\
+? [stat7:&aEnlightened Royalty]\r\
+? [stat4=100]\r\
+? [stat8:&2Ancient Cardcaller]\r\
+~ reset",
+    [ "images/KingClubs.nft" ] = "0fK7 1e 0f \
+07 f 8 0  \
+0f 7   0 \
+0fa 7 a 0\
+87     ",
+    [ "images/AceSpades.nft" ] = "0fA7    \
+07     \
+07  f7  \
+07     \
+87     ",
+    [ "images/9Diamonds.nft" ] = "0e97 e7 \
+07 e7 \
+07 e7 e7 \
+07 e7 e7 \
+87     ",
+    [ "images/9Hearts.nft" ] = "0e97 e7 \
+07 e7 \
+07 e7 e7 \
+07 e7 e7 \
+87     ",
+    [ "stages/countTotals2" ] = "{>_playerTotal_[10,20][nil,0]\r\
+? [dealerHidden=false]\r\
+{>_dealerTotal_[10,11][nil,0]\r\
+- _turnOwner_\r\
+\r\
+- player\r\
+? [playerTotal>21]\r\
+~ endGame\r\
+? [playerHasCards=5]\r\
+~ endGame\r\
+~ gameMenu\r\
+\r\
+- dealer\r\
+? [dealerTotal>_playerTotal_]\r\
+~ endGame\r\
+? [dealerTotal>16]\r\
+~ endGame\r\
+? [dealerHasCards=5]\r\
+~ endGame\r\
+~ pullCard",
+    [ "images/7Hearts.nft" ] = "0e77    \
+07 e7 e7 \
+07 e7 \
+07 e7 e7 \
+87     ",
+    [ "stages/countTotals1" ] = "? [subtractAce>0]\r\
+- subAce\r\
+\r\
+- _turnOwner_\r\
+\r\
+- dealer\r\
+? [dealerTotal:0]\r\
+? [dealerTotal+_hand1Val_]\r\
+? [dealerTotal+_hand2Val_]\r\
+? [dealerTotal+_hand8Val_]\r\
+? [dealerTotal+_hand9Val_]\r\
+? [dealerTotal+_hand10Val_]\r\
+? [dealerTotal>21]\r\
+? [subtractAce:_dealerHasAce_]\r\
+? [subtractAce>0]\r\
+~ countTotals1\r\
+~ countTotals2\r\
+\r\
+- player\r\
+? [playerTotal:0]\r\
+? [playerTotal+_hand3Val_]\r\
+? [playerTotal+_hand4Val_]\r\
+? [playerTotal+_hand5Val_]\r\
+? [playerTotal+_hand6Val_]\r\
+? [playerTotal+_hand7Val_]\r\
+? [playerTotal>21]\r\
+? [subtractAce:_playerHasAce_]\r\
+? [subtractAce>0]\r\
+~ countTotals1\r\
+~ countTotals2\r\
+\r\
+\r\
+- subAce\r\
+? [subtractAce-1]\r\
+? [_turnOwner_Total-10]\r\
+? [_turnOwner_Total<22]\r\
+? [subtractAce:0]\r\
+? [subtractAce>0]\r\
+~ countTotals1\r\
+~ countTotals2",
+    [ "images/KingDiamonds.nft" ] = "0eK7 1e 0f e\
+07 f 8 0  \
+0f eeKKK0f \
+0eaf eeKaf 0e\
+87     ",
+    [ "stages/rules" ] = ">!&eBlackjack Rules\r\
+v>\r\
+> &4The &edealer&4 and \\n&bplayer&4 will both\\nreceive 2 cards\\nto start. \\nThe  total of each \\nhand will be\\ndisplayed on the\\nscreen.\r\
+v\r\
+> You will have \\nthe option of\\nadding another \\ncard to your \\nhand using \\n&0'hit'&4 or proceed \\nwith your turn \\nusing &0'stand'&4. \r\
+v\r\
+> Number cards are \\nworth their value. \\nKings, Queens, and \\nJacks are worth 10 \\nAces are worth 11 \\nor 1, depending on\\nwhich value will \\nkeep the total\\nfrom going over 21 \r\
+v\r\
+> After you stand, \\nthe dealer will \\ncontinue hitting \\nuntil they reach\\na card value of 17\\nor more.\r\
+v\r\
+> If the value of\\neither hand\\nexceeds 21, the \\nholder will lose\\nthe round.\r\
+v\r\
+>!&e5-Card Rule\r\
+v>\r\
+> &4If &byou&4 manage to\\npull 5 cards \\nwithout going over 21, you will \\nwin the round \\nby default.\\n\r\
+> &4However, if the\\n&edealer&4 is able to pull 5 cards\\nwithout reaching\\n17, you will\\nlose the round.\r\
+v\r\
+~ dealMenu",
+    [ "stages/handleCards" ] = "? [hand_cardTurn_Card:_pullCard_]\r\
+? [hand_cardTurn_Val:_pullVal_]\r\
+? [hand_cardTurn_ID:_pullID_]\r\
+\r\
+? [cardTurn=3]\r\
+? [turnOwner:player]\r\
+? [cardTurn+1]\r\
+? [_turnOwner_HasCards+1]\r\
+? [pullVal=11]\r\
+? [_turnOwner_HasAce+1]\r\
+\r\
+? [cardTurn<5]\r\
+~ pullCard\r\
+? [cardTurn>4]\r\
+~ drawCards",
+    [ "game.lua" ] = "goldcubeapi.initiate(shell, fs.getDir(shell.getRunningProgram()))\
+shell.exit()",
+    [ "stages/pullCard" ] = "? [random1?4]\
+? [random1=1]\
+? [pullSuit:Hearts]\
+? [random1=2]\
+? [pullSuit:Diamonds]\
+? [random1=3]\
+? [pullSuit:Clubs]\
+? [random1=4]\
+? [pullSuit:Spades]\
+\
+? [random2?13]\
+? [random2<11]\
+? [pullRank:_random2_]\
+? [random2<11]\
+? [pullVal:_random2_]\
+? [pullRank=1]\
+? [pullRank:Ace]\
+? [pullRank=Ace]\
+? [pullVal:11]\
+? [random2=11]\
+? [pullRank:Jack]\
+? [random2=12]\
+? [pullRank:Queen]\
+? [random2=13]\
+? [pullRank:King]\
+? [pullRank=Jack]\
+? [pullVal:10]\
+? [pullRank=Queen]\
+? [pullVal:10]\
+? [pullRank=King]\
+? [pullVal:10]\
+\
+? [pullCard:_pullRank_ of _pullSuit_]\
+? [pullID:_pullRank__pullSuit_]\
+\
+? [pullCard=_hand1Card_]\
+~ pullCard\
+? [pullCard=_hand2Card_]\
+~ pullCard\
+? [pullCard=_hand3Card_]\
+~ pullCard\
+? [pullCard=_hand4Card_]\
+~ pullCard\
+? [pullCard=_hand5Card_]\
+~ pullCard\
+? [pullCard=_hand6Card_]\
+~ pullCard\
+? [pullCard=_hand7Card_]\
+~ pullCard\
+? [pullCard=_hand8Card_]\
+~ pullCard\
+? [pullCard=_hand9Card_]\
+~ pullCard\
+? [pullCard=_hand10Card_]\
+~ pullCard\
+\
+~ handleCards",
+    [ "images/JackClubs.nft" ] = "0fJ7  f \
+07 f 8 0  \
+0f 7 0 f 0 \
+0f 7 0 \
+87     ",
+    [ "images/10Spades.nft" ] = "0f107 \
+07 f7 \
+07 f7 \
+07 f 7 \
+87     ",
+    [ "images/8Diamonds.nft" ] = "0e87 e7 \
+07 e7 e7 \
+07 e7 e7 \
+07 e7 e7 \
+87     ",
+    [ "images/QueenDiamonds.nft" ] = "0eQ7 1e 0f e\
+07 f 8 0  \
+0f e   0 \
+0ef e 0 e\
+87     ",
+    [ "images/6Spades.nft" ] = "0f67    \
+07 f7 f7 \
+07 f7 f7 \
+07 f7 f7 \
+87     ",
+    [ "images/2Hearts.nft" ] = "0e27    \
+07     \
+07 e7 e7 \
+07     \
+87     ",
+    [ "images/AceHearts.nft" ] = "0eA7    \
+07     \
+07  e7  \
+07     \
+87     ",
+    [ "images/10Hearts.nft" ] = "0e107 \
+07 e7 \
+07 e7 \
+07 f e7 \
+87     ",
+    [ "images/Reverse.nft" ] = "87     \
+87     \
+87     \
+87     \
+77     ",
+    [ "images/JackHearts.nft" ] = "0eJ7  f e\
+07 f 8 0  \
+0f e   0 \
+0ef e 0 e\
+87     ",
+    [ "images/AceClubs.nft" ] = "0fA7    \
+07     \
+07  f7  \
+07     \
+87     ",
+    [ "images/8Hearts.nft" ] = "0e87 e7 \
+07 e7 e7 \
+07 e7 e7 \
+07 e7 e7 \
+87     ",
+    [ "images/4Clubs.nft" ] = "0f47    \
+07 f7 f7 \
+07 f7 f7 \
+07     \
+87     ",
+    [ "images/2Clubs.nft" ] = "0f27    \
+07     \
+07 f7 f7 \
+07     \
+87     ",
+    [ "images/gameMenu.nft" ] = "87                                                         \
+87 7                                     8                   \
+87 d 5   d   5   d   5   d   5   d   5   d   5   d  7 8  e 0Dealer7 8         \
+87 d  5 d     5 d     5 d     5 d     5 d     5 d   7 8  7                 \
+87 d                                    7 8  f                 \
+87 d  5 d     5 d     5 d     5 d     5 d     5 d   7 8  f                 \
+87 d 5   d   5   d   5   d   5   d   5   d   5   d  7 8  f                 \
+87 5     d 5     d 5     d 5     d 5     d 5     d 7 8  f                 \
+87 5                                    7 8  f                 \
+87 5     d 5     d 5     d 5     d 5     d 5     d 7 8  f                 \
+87 d 5   d   5   d   5   d   5   d   5   d   5   d  7 8   0     7        0 7  \
+87 d  5 d     5 d     5 d     5 d     5 d     5 d   7 8  0    7 0 7 0        7  \
+87 d                                    7 8             0    7  \
+87 d  5 d     5 d     5 d     5 d     5 d     5 d   7 8  b 0Player7 8    0   7  \
+87 d 5   d   5   d   5   d   5   d   5   d   5   d  7 8  7                 \
+87 5     d 5     d 5     d 5     d 5     d 5     d 7 8  f  0 7              \
+87 5                                    7 8  f  0 7              \
+87 5     d 5     d 5     d 5     d 5     d 5     d 7 8  f  0 7              \
+87 d 5   d   5   d   5   d   5   d   5   d   5   d  7 8  f  0 7              \
+87 d  5 d     5 d     5 d     5 d     5 d     5 d   7 8  f  0 7              \
+87 d                                    7 8  f  0 7              \
+87 d  5 d     5 d     5 d     5 d     5 d     5 d   7 8   0      7      0  7  \
+87 d9 57   d9   57   d9   57   d9   57   d9   57   d9   57   d9  77 8                   \
+87                                                         ",
+    [ "menu.nft" ] = "\
+\
+\
+\
+\
+\
+                0e9     0f2e       0e5       0f8 e \
+                0e  8    07 f8      08 e 8    08 f 7 \
+                08 e    08  f 8    08  e8     08 f 7 \
+                08 e     08        08 e 8    08 f 7 \
+                86   e     8e        8e        8e     \
+\
+                7e       Blackjack       ",
+    [ "images/4Hearts.nft" ] = "0e47    \
+07 e 7 \
+07 e7 e7 \
+07     \
+87     ",
+    credit = "GC:Blackjack \
+made by Missooni, 2024\
+\
+Thank you for downloading!\
+Feel free to use the assets from this\
+game in your own games.\
+",
+    [ "images/4Diamonds.nft" ] = "0e47    \
+07 e 7 \
+07 e7 e7 \
+07     \
+87     ",
+    [ "images/6Clubs.nft" ] = "0f67    \
+07 f7 f7 \
+07 f7 f7 \
+07 f7 f7 \
+87     ",
+    [ "stages/gameMenu" ] = "-*[hit|hit][x][x][stand|stand]\r\
+- hit\r\
+~ pullCard\r\
+- stand\r\
+? [cardTurn:8]\r\
+? [turnOwner:dealer]\r\
+? [dealerHidden:false]\r\
+{ _hand2ID_.nft[10,4]\r\
+{>_hand2Card_[40,5][f,0]\r\
+~ countTotals1",
+    [ "images/5Spades.nft" ] = "0f57    \
+07 f7 f7 \
+07  f7 f \
+07 f7 f \
+87     ",
+    [ "stages/reset" ] = "? [subtractAce:0]\r\
+? [dealerHasAce:0]\r\
+? [playerHasAce:0]\r\
+? [dealerHasCards:0]\r\
+? [playerHasCards:0]\r\
+? [hand1Card:none]\r\
+? [hand1Val:0]\r\
+? [hand2Card:none]\r\
+? [hand2Val:0]\r\
+? [hand3Card:none]\r\
+? [hand3Val:0]\r\
+? [hand4Card:none]\r\
+? [hand4Val:0]\r\
+? [hand5Card:none]\r\
+? [hand5Val:0]\r\
+? [hand6Card:none]\r\
+? [hand6Val:0]\r\
+? [hand7Card:none]\r\
+? [hand7Val:0]\r\
+? [hand8Card:none]\r\
+? [hand8Val:0]\r\
+? [hand9Card:none]\r\
+? [hand9Val:0]\r\
+? [hand10Card:none]\r\
+? [hand10Val:0]\r\
+? [dealerTotal:0]\r\
+? [playerTotal:0]\r\
+? [cardTurn:1]\r\
+? [turnOwner:dealer]\r\
+? [dealerHidden:true]\r\
+~ dealMenu",
+    [ "images/QueenHearts.nft" ] = "0eQ7 1e 0f e\
+07 f 8 0  \
+0f e   0 \
+0ef e 0 e\
+87     ",
+    [ "images/4Spades.nft" ] = "0f47    \
+07 f7 f7 \
+07 f7 f7 \
+07     \
+87     ",
+    [ "images/9Spades.nft" ] = "0f97 f7 \
+07 f7 \
+07 f7 f7 \
+07 f7 f7 \
+87     ",
+    gamefileDefault = "savestate = dealMenu\
+[Stats Page]\
+stat2 = \"  &eBlackjack&0\"\
+stat4 = 0\
+stat4tag = \"&4Games won\\058 &0\"\
+stat6 = \"&4Rank\\058\"\
+stat7 = \"&0Fresh Deck of Cards\"\
+\
+cardTurn = 1\
+turnOwner = dealer\
+\
+pullSuit = none\
+pullRank = none\
+pullVal = 0\
+pullCard = none\
+pullID = none\
+\
+; Initial 2 cards given to dealer. (1-2)\
+hand1Card = none\
+hand1ID = none\
+hand1Val = 0\
+hand2Card = none\
+hand2ID = none\
+hand2Val = 0\
+\
+dealerHidden = true\
+\
+; Initial 2 cards given to player. (3-4)\
+hand3Card = none\
+hand3ID = none\
+hand3Val = 0\
+hand4Card = none\
+hand4ID = none\
+hand4Val = 0\
+\
+; 3 Cards that the player can choose to draw.\
+hand5Card = none\
+hand5ID = none\
+hand5Val = 0\
+hand6Card = none\
+hand6ID = none\
+hand6Val = 0\
+hand7Card = none\
+hand7ID = none\
+hand7Val = 0\
+\
+; 3 Cards that the dealer can choose to draw.\
+hand8Card = none\
+hand8ID = none\
+hand8Val = 0\
+hand9Card = none\
+hand9ID = none\
+hand9Val = 0\
+hand10Card = none\
+hand10ID = none\
+hand10Val = 0\
+\
+dealerHasAce = 0\
+playerHasAce = 0\
+subtractAce = 0\
+\
+dealerTotal = 0\
+dealerHasCards = 0\
+playerTotal = 0\
+playerHasCards = 0\
+\
+random1 = 0\
+random2 = 0",
+    [ "images/3Diamonds.nft" ] = "0e37    \
+07 f ef 7 \
+07 ef e7 \
+07  f 7  \
+87     ",
+    [ "images/JackSpades.nft" ] = "0fJ7  f \
+07 f 8 0  \
+0f 7 0 f 0 \
+0f 7 0 \
+87     ",
+    [ "images/QueenClubs.nft" ] = "0fQ7 1e 0f \
+07 f 8 0  \
+0f 7   0 \
+0f 7 0 \
+87     ",
+    [ "images/10Diamonds.nft" ] = "0e107 \
+07 e7 \
+07 e7 \
+07 f e7 \
+87     ",
+    [ "images/10Clubs.nft" ] = "0f107 \
+07 f7 \
+07 f7 \
+07 f 7 \
+87     ",
+    [ "images/3Clubs.nft" ] = "0f37    \
+07 f  7 \
+07 f 7 \
+07  f 7  \
+87     ",
+    [ "images/6Hearts.nft" ] = "0e67    \
+07 e7 e7 \
+07 e7 e7 \
+07 e7 e7 \
+87     ",
+    [ "stages/endGame" ] = "? [playerTotal>21]\r\
+- loss1\r\
+? [dealerTotal>21]\r\
+- win1\r\
+? [dealerHasCards=5]\r\
+- loss2\r\
+? [playerHasCards=5]\r\
+- win2\r\
+? [dealerTotal>_playerTotal_]\r\
+- loss3\r\
+? [playerTotal>_dealerTotal_]\r\
+- win3\r\
+? [playerTotal=_dealerTotal_]\r\
+- loss4\r\
+\r\
+- win1\r\
++ entity.experience_orb.pickup[0.5,0.8]\r\
++ entity.experience_orb.pickup[1,1.2]\r\
+? [stat4+1]\r\
+> &eDealer&4 bust,\\n&bplayer&4 wins!\r\
+v\r\
+~ updateRank\r\
+\r\
+- win2\r\
++ entity.experience_orb.pickup[0.5,0.8]\r\
++ entity.experience_orb.pickup[1,1.2]\r\
+? [stat4+1]\r\
+> &45 card rule,\\n&bplayer&4 wins!\r\
+v\r\
+~ updateRank\r\
+\r\
+- win3\r\
++ entity.experience_orb.pickup[0.5,0.8]\r\
++ entity.experience_orb.pickup[1,1.2]\r\
+? [stat4+1]\r\
+> &bPlayer&4 wins!\r\
+v\r\
+~ updateRank\r\
+\r\
+- loss1\r\
++ block.enchantment_table.use[1,1]\r\
+> &bPlayer&4 bust,\\n&edealer&4 wins!\r\
+v\r\
+~ reset\r\
+\r\
+- loss2\r\
++ block.enchantment_table.use[1,1]\r\
+> &45 card rule,\\n&edealer&4 wins!\r\
+v\r\
+~ reset\r\
+\r\
+- loss3\r\
++ block.enchantment_table.use[1,1]\r\
+> &eDealer&4 wins!\r\
+v\r\
+~ reset\r\
+\r\
+- loss4\r\
++ block.enchantment_table.use[1,1.5]\r\
+> &4Round ends in\\na draw!\r\
+v\r\
+~ reset",
+    [ "images/2Diamonds.nft" ] = "0e27    \
+07     \
+07 e7 e7 \
+07     \
+87     ",
+    [ "images/7Clubs.nft" ] = "0f77    \
+07 f7 f7 \
+07 f7 \
+07 f7 f7 \
+87     ",
+    [ "images/3Spades.nft" ] = "0f37    \
+07 f  7 \
+07 f 7 \
+07  f 7  \
+87     ",
+    [ "images/5Hearts.nft" ] = "0e57    \
+07 e7 e7 \
+07  e7 f \
+07 e7 ef \
+87     ",
+    [ "images/5Diamonds.nft" ] = "0e57    \
+07 e7 e7 \
+07  e7 f \
+07 e7 ef \
+87     ",
+    [ "images/5Clubs.nft" ] = "0f57    \
+07 f7 f7 \
+07  f7 f \
+07 f7 f \
+87     ",
+    [ "images/QueenSpades.nft" ] = "0fQ7 1e 0f \
+07 f 8 0  \
+0f 7   0 \
+0f 7 0 \
+87     ",
+    [ "images/7Diamonds.nft" ] = "0e77    \
+07 e7 e7 \
+07 e7 \
+07 e7 e7 \
+87     ",
+    [ "images/3Hearts.nft" ] = "0e37    \
+07 f ef 7 \
+07 ef e7 \
+07  f 7  \
+87     ",
+    [ "images/KingSpades.nft" ] = "0fK7 1e 0f \
+07 f 8 0  \
+0f 7   0 \
+0fa 7 a 0\
+87     ",
+    [ "images/2Spades.nft" ] = "0f27    \
+07     \
+07 f7 f7 \
+07     \
+87     ",
+    [ "images/KingHearts.nft" ] = "0eK7 1e 0f e\
+07 f 8 0  \
+0f eeKKK0f \
+0eaf eeKaf 0e\
+87     ",
+    [ "images/9Clubs.nft" ] = "0f97 f7 \
+07 f7 \
+07 f7 f7 \
+07 f7 f7 \
+87     ",
+    [ "images/8Clubs.nft" ] = "0f87 f7 \
+07 f7 f7 \
+07 f7 f7 \
+07 f7 f7 \
+87     ",
+    [ "images/8Spades.nft" ] = "0f87 f7 \
+07 f7 f7 \
+07 f7 f7 \
+07 f7 f7 \
+87     ",
+    [ "images/7Spades.nft" ] = "0f77    \
+07 f7 f7 \
+07 f7 \
+07 f7 f7 \
+87     ",
+  },
+}
