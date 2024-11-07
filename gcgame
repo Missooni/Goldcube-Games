@@ -1,0 +1,736 @@
+{
+  mainFile = false,
+  compressed = false,
+  data = {
+    [ "menu.nft" ] = "\
+\
+\
+\
+\
+                    f4                  f1\
+\
+           c7   f7        f1                f4\
+           c7     c7    c7      4f                  f1\
+           c7     c7    c7     c7      c7      c7      c7      c7      c7   \
+           c7       c7     c7 fcŒc7    c7    c7    c7      c7 fcŒc7    c7 41‡1f   c7 fcŒc7 \
+           c7       c7     c7    c7    c7    c7    c7      c7    c7    c7      c7    c7 \
+",
+    [ "images/mancalaBoard.nft" ] = "\
+   c7                                   \
+c7  7    c 7   c 7   c 7   c 7   c 7   c 7   c 7    c  \
+c7  f80     c7 f04    c7 f04    c7 f04    c7 f04    c7 f04    c7 f04    c7 f80     c7  \
+c7        c7    47    c7    47    c7    47    c7    47    c7    47    c7    47    c7       c7  \
+c7        c7 4 1  c 4 1  c 4 1  c 4 1  c 4 1  c 4 1  c       c7  \
+c7        c7                               c7  \
+c7        c7 7   c 7   c 7   c 7   c 7   c 7   c       c7  \
+c7        c7 f04    c7 f04    c7 f04    c7 f04    c7 f04    c7 f04    c7       c7  \
+c7        c7    47    c7    47    c7    47    c7    47    c7    47    c7    47    c7       c7  \
+c7        c7 4 1  c 4 1  c 4 1  c 4 1  c 4 1  c 4 1  c0       c7  \
+77 c                                   7 \
+   77                                   ",
+    [ "stages/selectCell" ] = "{ arrows/right.nft[47,10]\
+{ arrows/left.nft[6,10]\
+{> Confirm [24,22][4,f]\
+{>         [24,23][7,f]\
+-^[x][x][confirm][x][L][x][x][R][x]\
+- R\
++ block.note_block.hat[0.5,1.1]\
+{ arrows/rightP.nft[47,10]\
+v>0.1\
+{ arrows/right.nft[47,10]\
+? [selected=6]\
+? [selected:0]\
+? [selected<6]\
+? [selected+1]\
+~ drawSelected\
+- L\
++ block.note_block.hat[0.5,0.9]\
+{ arrows/leftP.nft[6,10]\
+v>0.1\
+{ arrows/left.nft[6,10]\
+? [selected>0]\
+? [selected-1]\
+? [selected=0]\
+? [selected:6]\
+~ drawSelected\
+- confirm\
++ block.nether_wood_trapdoor.close[0.5,1]\
+v>0.15\
+{>         [24,22][f,f]\
+{> Confirm [24,23][4,f]\
+v>0.1\
+{> Confirm [24,22][4,f]\
+{>         [24,23][7,f]\
+? [selectedSv:_selected_]\
+? [turnOwner=p2]\
+- convertS\
+~ handleSelection\
+\
+- convertS\
+? [selected=1]\
+? [selected:13]\
+? [selected=2]\
+? [selected:12]\
+? [selected=3]\
+? [selected:11]\
+? [selected=4]\
+? [selected:10]\
+? [selected=5]\
+? [selected:9]\
+? [selected=6]\
+? [selected:8]\
+~ handleSelection\
+",
+    [ "images/cap6.nft" ] = "47    \
+47    \
+47    \
+47    \
+47    \
+47    ",
+    [ "images/cap1.nft" ] = "\
+\
+\
+\
+\
+17    \
+\
+",
+    [ "images/cap4.nft" ] = "\
+\
+17    \
+17 4 1 4 \
+47 1 4  \
+47    ",
+    [ "images/cell1.nft" ] = "\
+   17 \
+",
+    [ "images/cell6.nft" ] = "47   \
+47   ",
+    [ "images/cell5.nft" ] = "   47 1 \
+17  4 \
+",
+    [ "stages/confirmSelect" ] = "+ block.nether_sprouts.step[1,1.3]\
+v>0.15\
+? [sCmb:_s7_]\
+? [sCmb+_s14_]\
+? [sCmb=48]\
+~ finalCount\
+\
+? [sLeft:48]\
+? [sLeft-_sCmb_]\
+? [sDiff:_s7_]\
+? [sDiff-_s14_]\
+? [sDiff<0]\
+? [sDiff*-1]\
+? [sLeft<_sDiff_]\
+~ finalCount\
+\
+? [sTimer=0]\
+- sC\
+\
+? [sTimer-1]\
+? [selected+1]\
+? [selected=15]\
+? [selected:1]\
+? [s_selected_+1]\
+~ updateCells\
+\
+- sC\
+? [turnOwner=p2]\
+- sC2\
+? [selected=7]\
+- sCX1\
+? [turnOwner:p2]\
+? [selected:1]\
+~ startRound\
+\
+- sC2\
+? [selected=14]\
+- sCX2\
+? [turnOwner:p1]\
+? [selected:1]\
+~ startRound\
+\
+- sCX1\
+? [selected:_selectedSv_]\
++ entity.firework_rocket.twinkle[0.8,1]\
+? [p1Cmb=0]\
+~ startRound\
+~ drawSelected\
+\
+- sCX2\
+? [selected:_selectedSv_]\
++ entity.firework_rocket.twinkle[0.8,1]\
+? [p2Cmb=0]\
+~ startRound\
+~ drawSelected\
+\
+",
+    [ "stages/inputNames" ] = "? [stat4,&0Input name for\\n&bPlayer 1:\\n]\
+? [stat6,&0Input name for\\n&ePlayer 2:\\n]\
+~ generateBoard\
+",
+    gamefileDefault = "savestate = initiate\
+\
+[Stats Page]\
+stat2 = \"  &4\\007 &0Mancala &4\\007\"\
+stat4 = \"\"\
+stat4tag = \"&bP1\\058 \"\
+stat6 = \"\"\
+stat6tag = \"&eP2\\058 \"\
+\
+turnOwner = p1\
+random = 0\
+selectedSv = 1\
+selected = 1\
+sTimer = 0\
+sImg = none\
+sX = 0\
+sY = 0\
+cImg = none\
+cX = 0\
+cY = 0\
+\
+s1 = 4\
+s2 = 4\
+s3 = 4\
+s4 = 4\
+s5 = 4\
+s6 = 4\
+s7 = 0\
+s8 = 4\
+s9 = 4\
+s10 = 4\
+s11 = 4\
+s12 = 4\
+s13 = 4\
+s14 = 0\
+sCmb = 0\
+sLeft = 0\
+sDiff = 0\
+\
+p1Cmb = 0\
+p2Cmb = 0\
+",
+    [ "game.lua" ] = "goldcubeapi.initiate(shell, fs.getDir(shell.getRunningProgram()))\
+shell.exit()",
+    [ "images/xCell.nft" ] = "ff   \
+ff   \
+",
+    [ "images/arrows/left.nft" ] = "\
+    87 \
+   87  \
+   77 8 \
+    77 ",
+    [ "images/cap2.nft" ] = "\
+\
+\
+\
+17    \
+17    ",
+    [ "images/arrows/blue.nft" ] = "fb\
+",
+    [ "images/cap3.nft" ] = "\
+\
+\
+17    \
+17  4 1 \
+17 4 1 4 ",
+    [ "images/cell2.nft" ] = "\
+17    47 \
+",
+    gamefile = "savestate = initiate\
+\
+[Stats Page]\
+s13 = 4\
+sX = 0\
+s7 = 0\
+s5 = 4\
+s12 = 4\
+stat2 = \"  &4\\007 &0Mancala &4\\007\"\
+s9 = 4\
+selected = 1\
+random = 0\
+p2Cmb = 0\
+cX = 0\
+sDiff = 0\
+s10 = 4\
+sImg = none\
+s3 = 4\
+sY = 0\
+s6 = 4\
+s4 = 4\
+s8 = 4\
+cImg = none\
+stat4 = \
+p1Cmb = 0\
+cY = 0\
+selectedSv = 1\
+stat6tag = \"&eP2\\058 \"\
+sLeft = 0\
+sTimer = 0\
+turnOwner = p1\
+stat4tag = \"&bP1\\058 \"\
+stat6 = \
+sCmb = 0\
+s14 = 0\
+s11 = 4\
+s1 = 4\
+s2 = 4\
+",
+    [ "images/cell3.nft" ] = "   47 \
+17    17 \
+",
+    [ "images/arrows/rightP.nft" ] = "\
+   f7 \
+   87 f \
+   87  \
+   87 ",
+    [ "stages/updateCells" ] = "? [selected=7]\
+- cap1\
+\
+? [selected=14]\
+- cap2\
+\
+? [cY:15]\
+? [selected>7]\
+? [cY:10]\
+\
+? [selected=1]\
+? [cX:17]\
+? [selected=2]\
+? [cX:21]\
+? [selected=3]\
+? [cX:25]\
+? [selected=4]\
+? [cX:29]\
+? [selected=5]\
+? [cX:33]\
+? [selected=6]\
+? [cX:37]\
+\
+? [selected=13]\
+? [cX:17]\
+? [selected=12]\
+? [cX:21]\
+? [selected=11]\
+? [cX:25]\
+? [selected=10]\
+? [cX:29]\
+? [selected=9]\
+? [cX:33]\
+? [selected=8]\
+? [cX:37]\
+\
+? [s_selected_=0]\
+? [cImg:xCell.nft]\
+? [s_selected_=1]\
+? [cImg:cell1.nft]\
+? [s_selected_=2]\
+? [cImg:cell2.nft]\
+? [s_selected_=3]\
+? [cImg:cell3.nft]\
+? [s_selected_=4]\
+? [cImg:cell4.nft]\
+? [s_selected_=5]\
+? [cImg:cell5.nft]\
+? [s_selected_>5]\
+? [cImg:cell6.nft]\
+\
+{ xCell.nft[_cX_,_cY_]\
+{ _cImg_[_cX_,_cY_]\
+~ countScore\
+\
+- cap1\
+? [s_selected_>0]\
+? [cImg:cap1.nft]\
+? [s_selected_>4]\
+? [cImg:cap2.nft]\
+? [s_selected_>8]\
+? [cImg:cap3.nft]\
+? [s_selected_>12]\
+? [cImg:cap4.nft]\
+? [s_selected_>16]\
+? [cImg:cap5.nft]\
+? [s_selected_>20]\
+? [cImg:cap6.nft]\
+{ _cImg_[41,11]\
+~ countScore\
+\
+- cap2\
+? [s_selected_>0]\
+? [cImg:cap1.nft]\
+? [s_selected_>4]\
+? [cImg:cap2.nft]\
+? [s_selected_>8]\
+? [cImg:cap3.nft]\
+? [s_selected_>12]\
+? [cImg:cap4.nft]\
+? [s_selected_>16]\
+? [cImg:cap5.nft]\
+? [s_selected_>20]\
+? [cImg:cap6.nft]\
+{ _cImg_[12,11]\
+~ countScore\
+",
+    [ "stages/turnRandomizer" ] = ">?&4Randomizing...\
+? [random?2]\
+? [random=1]\
+? [turnOwner:p1]\
+? [random=2]\
+? [turnOwner:p2]\
+~ startRound\
+",
+    [ "stages/startRound" ] = "- _turnOwner_\
+\
+- p1\
+? [p1Cmb:0]\
+? [p1Cmb+_s1_]\
+? [p1Cmb+_s2_]\
+? [p1Cmb+_s3_]\
+? [p1Cmb+_s4_]\
+? [p1Cmb+_s5_]\
+? [p1Cmb+_s6_]\
+? [p1Cmb=0]\
+- skip1\
+\
++ item.armor.equip_leather[1,1.2]\
+>!&8Turn start:\\n&bP1 _stat4_\
+v 0.15\
+~ drawSelected\
+\
+- p2\
+? [p2Cmb:0]\
+? [p2Cmb+_s13_]\
+? [p2Cmb+_s12_]\
+? [p2Cmb+_s11_]\
+? [p2Cmb+_s10_]\
+? [p2Cmb+_s9_]\
+? [p2Cmb+_s8_]\
+? [p2Cmb=0]\
+- skip2\
+\
++ item.armor.equip_leather[1,1.2]\
+>!&8Turn start:\\n&eP2 _stat6_\
+v 0.15\
+~ drawSelected\
+\
+- skip1\
+? [turnOwner:p2]\
+~ drawSelected\
+\
+- skip2\
+? [turnOwner:p1]\
+~ drawSelected\
+",
+    [ "stages/rules" ] = "[$f\
+{ mancalaBoard.nft[10,6]\
+{>Player 2[10,3][nil,e]\
+{>Player 1[39,3][nil,b]\
+>!&cMancala Rules:&0\
+> Mancala is a game\\nplayed with two\\npeople sitting on\\nopposite sides of\\na wooden or stone\\nboard.\
+v\
+> Both players start\\nwith &csix cells&0\\ncontaining &1four \\nbeads.&0\
+v\
+> During your turn,\\nyou select a cell\\nto take all of\\nthe beads out of.\
+v\
+> One by one, these\\nbeads get evenly\\ndistributed\\nacross each cell\\ngoing counter-\\nclockwise until\\nyou have none left\\nin your hand.\
+v\
+> Each player has a\\nlarge empty cell\\non the right side\\nof their board.\\nFor &eplayer 2,&0\\nthis is on the\\nleft.\
+v\
+> Every time\\na bead lands in\\none of these cells\\na point is earned.\
+validlogin\
+> If the last bead\\nin your hand lands\\nin the capture\\ncell that\\ncorrelates\\nto your color,\\nyou can take\\nan additional turn\\n(&eLeft for red,&0 and\\n&bright for blue.&0)\
+v\
+> The game ends when\\nthere are not\\nenough beads left\\non the board to\\nmatch the\\ndifference in\\nscore between\\nplayers.\
+v\
+~ initiate\
+",
+    [ "stages/initiate" ] = "-*[x][rules|rules][exit|exit][start|start]\
+- start\
+~ inputNames\
+- rules\
+~ rules\
+- exit\
+",
+    [ "stages/handleSelection" ] = "? [selected=1]\
+? [sTimer:_s1_]\
+? [selected=2]\
+? [sTimer:_s2_]\
+? [selected=3]\
+? [sTimer:_s3_]\
+? [selected=4]\
+? [sTimer:_s4_]\
+? [selected=5]\
+? [sTimer:_s5_]\
+? [selected=6]\
+? [sTimer:_s6_]\
+? [selected=8]\
+? [sTimer:_s8_]\
+? [selected=9]\
+? [sTimer:_s9_]\
+? [selected=10]\
+? [sTimer:_s10_]\
+? [selected=11]\
+? [sTimer:_s11_]\
+? [selected=12]\
+? [sTimer:_s12_]\
+? [selected=13]\
+? [sTimer:_s13_]\
+? [sTimer=0]\
+- sC\
+\
+? [s_selected_:0]\
+~ updateCells\
+\
+- sC\
+? [selected:_selectedSv_]\
+~ drawSelected\
+",
+    [ "stages/generateBoard" ] = "[$f\
+? [s1:4]\
+? [s2:4]\
+? [s3:4]\
+? [s4:4]\
+? [s5:4]\
+? [s6:4]\
+? [s7:0]\
+? [s8:4]\
+? [s9:4]\
+? [s10:4]\
+? [s11:4]\
+? [s12:4]\
+? [s13:4]\
+? [s14:0]\
+? [cImg:none]\
+\
+{ mancalaBoard.nft[10,6]\
+{>_stat6_[10,3][nil,e]\
+{>Score: _s14_[10,4][nil,8]\
+{>_stat4_[39,3][nil,b]\
+{>Score: _s7_[39,4][nil,8]\
+~ turnRandomizer\
+",
+    [ "images/cap5.nft" ] = "\
+17 4 1  \
+47 1 4  \
+47    \
+47    \
+47    ",
+    [ "images/arrows/right.nft" ] = "\
+   87 \
+   87  \
+   87 7 \
+   77 ",
+    gamefileDisplay = "savestate = initiate\
+\
+[Stats Page]\
+s13 = 4\
+sX = 0\
+s7 = 0\
+s5 = 4\
+s12 = 4\
+stat2 = \"  &4\\007 &0Mancala &4\\007\"\
+s9 = 4\
+selected = 1\
+random = 0\
+p2Cmb = 0\
+cX = 0\
+sDiff = 0\
+s10 = 4\
+sImg = none\
+s3 = 4\
+sY = 0\
+s6 = 4\
+s4 = 4\
+s8 = 4\
+cImg = none\
+stat4 = \
+p1Cmb = 0\
+cY = 0\
+selectedSv = 1\
+stat6tag = \"&eP2\\058 \"\
+sLeft = 0\
+sTimer = 0\
+turnOwner = p1\
+stat4tag = \"&bP1\\058 \"\
+stat6 = \
+sCmb = 0\
+s14 = 0\
+s11 = 4\
+s1 = 4\
+s2 = 4\
+",
+    credit = "GC:Mancala \r\
+made by Missooni, 2024\r\
+\r\
+Thank you for downloading!\r\
+Feel free to use the assets from this\r\
+game in your own games.\r\
+",
+    [ "stages/finalCount" ] = "v>0.15\
+? [s7>_s14_]\
+- p1Win\
+? [s14>_s7_]\
+- p2Win\
+? [s7=_s14_]\
+\
+\
+- p1Win\
++ entity.firework_rocket.launch[0.8,0.9]\
+v>0.5\
++ entity.firework_rocket.launch[0.8,1]\
+v>0.8\
++ entity.firework_rocket.large_blast[1,1]\
+v>0.4\
++ entity.firework_rocket.twinkle[0.5,1]\
+> &b_stat4_&0 wins!\
+v\
+~ initiate\
+\
+- p2Win\
++ entity.firework_rocket.launch[0.8,0.9]\
+v>0.5\
++ entity.firework_rocket.launch[0.8,1]\
+v>0.8\
++ entity.firework_rocket.large_blast[1,1]\
+v>0.4\
++ entity.firework_rocket.twinkle[0.5,1]\
+> &e_stat6_&0 wins!\
+v\
+~ initiate\
+\
+- draw\
++ entity.firework_rocket.launch[0.8,0.9]\
+v>0.5\
++ entity.firework_rocket.blast[0.5,1]\
+> &4Draw!&0\
+~ initiate\
+",
+    [ "stages/drawSelected" ] = "{>                             [18,20][nil,f]\
+{>                             [18,5][nil,f]\
+\
+? [turnOwner=p1]\
+? [sImg:arrows/blue.nft]\
+? [turnOwner=p1]\
+? [sY:20]\
+? [turnOwner=p2]\
+? [sImg:arrows/red.nft]\
+? [turnOwner=p2]\
+? [sY:5]\
+? [selected=1]\
+? [sX:18]\
+? [selected=2]\
+? [sX:22]\
+? [selected=3]\
+? [sX:26]\
+? [selected=4]\
+? [sX:30]\
+? [selected=5]\
+? [sX:34]\
+? [selected=6]\
+? [sX:38]\
+{ _sImg_[_sX_,_sY_]\
+~ selectCell\
+",
+    [ "stages/countScore" ] = "- s_selected_\
+\
+- s1\
+? [s1=0]\
+{>  [17,14][f,0]\
+{>_s1_[17,14][f,0]\
+~ confirmSelect\
+\
+- s2\
+? [s2=0]\
+{>  [21,14][f,0]\
+{>_s2_[21,14][f,0]\
+~ confirmSelect\
+\
+- s3\
+? [s3=0]\
+{>  [25,14][f,0]\
+{>_s3_[25,14][f,0]\
+~ confirmSelect\
+\
+- s4\
+? [s4=0]\
+{>  [29,14][f,0]\
+{>_s4_[29,14][f,0]\
+~ confirmSelect\
+\
+- s5\
+? [s5=0]\
+{>  [33,14][f,0]\
+{>_s5_[33,14][f,0]\
+~ confirmSelect\
+\
+- s6\
+? [s6=0]\
+{>  [37,14][f,0]\
+{>_s6_[37,14][f,0]\
+~ confirmSelect\
+\
+- s7\
+? [s7>0]\
+{>_s7_[41,9][f,0]\
+? [s7>0]\
+{>_s7_[46,4][f,0]\
+~ confirmSelect\
+\
+- s8\
+? [s8=0]\
+{>  [37,9][f,0]\
+{>_s8_[37,9][f,0]\
+~ confirmSelect\
+\
+- s9\
+? [s9=0]\
+{>  [33,9][f,0]\
+{>_s9_[33,9][f,0]\
+~ confirmSelect\
+\
+- s10\
+? [s10=0]\
+{>  [29,9][f,0]\
+{>_s10_[29,9][f,0]\
+~ confirmSelect\
+\
+- s11\
+? [s11=0]\
+{>  [25,9][f,0]\
+{>_s11_[25,9][f,0]\
+~ confirmSelect\
+\
+- s12\
+? [s12=0]\
+{>  [21,9][f,0]\
+{>_s12_[21,9][f,0]\
+~ confirmSelect\
+\
+- s13\
+? [s13=0]\
+{>  [17,9][f,0]\
+{>_s13_[17,9][f,0]\
+~ confirmSelect\
+\
+- s14\
+? [s14=0]\
+? [s14>0]\
+{>_s14_[12,9][f,0]\
+? [s14>0]\
+{>_s14_[17,4][f,0]\
+~ confirmSelect\
+",
+    [ "images/cell4.nft" ] = "   47 \
+47 1  \
+",
+    [ "images/arrows/red.nft" ] = "fe\
+",
+    [ "images/arrows/leftP.nft" ] = "\
+    f7 \
+   f7 8 \
+   87  \
+    87 ",
+  },
+}
